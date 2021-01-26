@@ -1,10 +1,10 @@
 const ProfileQuestions = require('./lib/GenerateProfiles');
 const PageTemplate = require('./src/page-template');
-const
+const GenerateProfiles = require('./lib/GenerateProfiles')
 new ProfileQuestions().createEmployees()
 .then((employees) => {
     PageTemplate.generatePage(employees);
 })
 .then((html) => {
-    ProfileQuestions.writeToFile(html);
+    ProfileQuestions.writeToHTML(html);
 });
