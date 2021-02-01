@@ -31,69 +31,62 @@ function PageTemplate(employees) {
 }
 
 function employeeRole(employees) {
-  console.log(getRole());
-  if (getRole() === "Manager") {
-    return generateManager(employees);
-  }
-  if (employees.getRole() === "Engineer") {
-    return generateEngineer(employees);
-  }
-  if (employees.getRole() === "Intern") {
-    return generateIntern(employees);
-  }
-}
-
-function generateManager(employees) {
-  console.log("generating manager");
+  console.log("employee roles (triggered)");
   return employees
     .map((e) => {
-      return `
-      <div class= "card mb-3" style="width: 18rem" >
-        <div class="card-body">
-          <h5 class="card-title bg-dark text-white">${e.name}</h5>
-          <p class="card-text">${e.getRole()}</p>
-          <p class="card-text">${e.id}</p>
-          <p class="card-text">${e.email}</p>
-          <p class="card-text">${e.officeNumber}</p>
-        </div>
-      </div>`;
+      console.log(e.getRole());
+      if (e.getRole() === "Manager") {
+        return generateManager(e);
+      }
+      if (e.getRole() === "Engineer") {
+        return generateEngineer(e);
+      }
+      if (e.getRole() === "Intern") {
+        return generateIntern(e);
+      }
     })
     .join("\n");
 }
 
-function generateEngineer(employees) {
+function generateManager(manager) {
   console.log("generating manager");
-  return employees
-    .map((e) => {
-      return `
-      <div class= "card mb-3" style="width: 18rem" >
-        <div class="card-body">
-          <h5 class="card-title bg-dark text-white">${e.name}</h5>
-          <p class="card-text">${e.getRole()}</p>
-          <p class="card-text">${e.id}</p>
-          <p class="card-text">${e.email}</p>
-          <p class="card-text">${e.github}</p>
-        </div>
-      </div>`;
-    })
-    .join("\n");
+
+  return `<div class= "card mb-3" style="width: 18rem" >
+    <div class="card-body">
+      <h5 class="card-title bg-dark text-white">${manager.name}</h5>
+      <p class="card-text">${manager.getRole()}</p>
+      <p class="card-text">${manager.id}</p>
+      <p class="card-text">${manager.email}</p>
+      <p class="card-text">${manager.officeNumber}</p>
+    </div>
+  </div>`;
 }
 
-function generateIntern(employees) {
-  console.log("generating manager");
-  return employees
-    .map((e) => {
-      return `
-      <div class= "card mb-3" style="width: 18rem" >
-        <div class="card-body">
-          <h5 class="card-title bg-dark text-white">${e.name}</h5>
-          <p class="card-text">${e.getRole()}</p>
-          <p class="card-text">${e.id}</p>
-          <p class="card-text">${e.email}</p>
-          <p class="card-text">${e.school}</p>
-        </div>
-      </div>`;
-    })
-    .join("\n");
+function generateEngineer(engineer) {
+  console.log("generating engineer");
+
+  return `<div class= "card mb-3" style="width: 18rem" >
+    <div class="card-body">
+      <h5 class="card-title bg-dark text-white">${engineer.name}</h5>
+      <p class="card-text">${engineer.getRole()}</p>
+      <p class="card-text">${engineer.id}</p>
+      <p class="card-text">${engineer.email}</p>
+      <p class="card-text">${engineer.github}</p>
+    </div>
+  </div>`;
+}
+
+function generateIntern(intern) {
+  console.log("generating intern");
+
+  return `<div class= "card mb-3" style="width: 18rem" >
+    <div class="card-body">
+      <h5 class="card-title bg-dark text-white">${intern.name}</h5>
+      <p class="card-text">${intern.getRole()}</p>
+      <p class="card-text">${intern.id}</p>
+      <p class="card-text">${intern.email}</p>
+      <p class="card-text">${intern.school}</p>
+    </div>
+  </div>`;
 }
 module.exports = PageTemplate;
